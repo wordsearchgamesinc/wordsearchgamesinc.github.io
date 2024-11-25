@@ -76,6 +76,7 @@ adform.com,2688,RESELLER,9f5210a2f0999e32
 adform.com,2795,RESELLER 
 adform.com,2967,RESELLER
 adform.com,2967,RESELLER,9f5210a2f0999e32
+adform.com,3016,RESELLER,9f5210a2f0999e32
 adform.com,3016,RESELLER
 adform.com,3215,RESELLER
 adiiix.com,par-AA7B236BA32DD484C838E249362437B8,RESELLER
@@ -679,6 +680,7 @@ onetag.com,59aa7be4921bac8,RESELLER
 onetag.com,7d9af0b85b5070e,reseller
 onetag.com,82bad7d17eccf7c,RESELLER
 onetag.com,82e44d118b79600,RESELLER
+onetag.com,8dac5efb6c952da,RESELLER
 onetag.com,8bd233947b607f0,RESELLER
 onetag.com,8dac5efb6c952da,RESELLER
 onetag.com,8dd1b050e3a7e60,RESELLER
