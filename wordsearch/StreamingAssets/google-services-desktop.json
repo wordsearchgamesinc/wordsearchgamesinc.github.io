@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "800477271248",
+    "firebase_url": "https://word-search-d10a9.firebaseio.com",
+    "project_id": "word-search-d10a9",
+    "storage_bucket": "word-search-d10a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800477271248:android:772de57c2df229f3",
+        "android_client_info": {
+          "package_name": "com.wordconnect.word.games.search.find"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800477271248-fakngkj5ec72em7db22ombsan1bkqif8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_nPdarw8xQtxk1gf9PG8ar_AYeqXe70Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800477271248-fakngkj5ec72em7db22ombsan1bkqif8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "800477271248-u23e8k4pa8ud3bmkrd4fbkfj3nnp04eq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.word.games.search.find.connect.letter"
+              }
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5328451100738607~3074847839"
+    }
+  ],
+  "configuration_version": "1"
+}

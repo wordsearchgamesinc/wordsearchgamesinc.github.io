@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>Word Search - Free Online Word Puzzle</title>
+    <meta name="description" content="Play free Word Search puzzles online in your browser. Find hidden words across classic, category, story, timed, and daily challenge modes.">
+    <meta name="keywords" content="word search, word search online, free word search, word puzzle, hidden words, daily word search, browser word game, free puzzle game">
+    <meta name="author" content="Word Search Games">
+    <meta name="theme-color" content="#162447">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <link rel="canonical" href="https://wordsearchgamesinc.com/wordsearch/">
+    <link rel="manifest" href="manifest.json">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wordsearchgamesinc.com/wordsearch/">
+    <meta property="og:title" content="Word Search - Free Online Word Puzzle">
+    <meta property="og:description" content="Play Word Search online for free with classic puzzles, categories, daily challenges, and multiple languages.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Word Search - Free Online Word Puzzle">
+    <meta name="twitter:description" content="Play Word Search online for free with classic puzzles, categories, daily challenges, and multiple languages.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Word Search - Free Online Word Puzzle",
+        "description": "Play Word Search online for free with classic puzzles, categories, daily challenges, and multiple languages.",
+        "genre": ["Word Game", "Puzzle", "Casual"],
+        "playMode": "SinglePlayer",
+        "applicationCategory": "Game",
+        "operatingSystem": "Web Browser",
+        "gamePlatform": ["Web Browser", "Desktop", "Mobile", "Tablet"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Word Search Games"
+        }
+    }
+    </script>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            background: #162447;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body,
+        #game-container,
+        #unity-container,
+        #unity-canvas {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+            overscroll-behavior: none;
+            background: #162447;
+            touch-action: none;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        #game-container,
+        #unity-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #unity-canvas {
+            display: block;
+            background: #162447;
+            outline: none;
+        }
+
+        #unity-loading-bar {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+                max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+            color: white;
+            text-align: center;
+            background: radial-gradient(circle at 50% 35%, #294a86 0%, #162447 68%);
+            opacity: 1;
+            transition: opacity 0.25s ease-out;
+        }
+
+        #unity-loading-bar.is-hidden {
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        #loading-title {
+            font-size: clamp(22px, 4vw, 34px);
+            font-weight: 700;
+        }
+
+        #loading-status {
+            min-height: 1.4em;
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        #unity-progress-bar-empty {
+            width: min(320px, calc(100vw - 56px));
+            height: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        #unity-progress-bar-full {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #ffcf4a, #ff8a3d);
+            transition: width 0.15s ease-out;
+        }
+
+        .seo-content {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <main class="seo-content">
+        <h1>Free Online Word Search</h1>
+        <p>Find hidden words in responsive browser-based Word Search puzzles.</p>
+        <h2>Features</h2>
+        <ul>
+            <li>Free browser play with no download required</li>\n<li>Responsive layouts for desktop, tablet, and phone browsers</li>\n<li>Classic, category, story, timed, and daily challenge modes</li>\n<li>Persistent local progress and statistics</li>\n<li>Multiple supported languages</li>\n
+        </ul>
+    </main>
+
+    <div id="game-container">
+        <div id="unity-container">
+            <canvas id="unity-canvas" tabindex="-1"></canvas>
+            <div id="unity-loading-bar">
+                <div id="loading-title">Word Search</div>
+                <div id="loading-status">Loading game...</div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buildUrl = "Build";
+        const loaderUrl = buildUrl + "/71ab4f547bfc1ec4fb1db710ab85bfd7.loader.js";
+        const canvas = document.querySelector("#unity-canvas");
+        const loadingBar = document.querySelector("#unity-loading-bar");
+        const loadingStatus = document.querySelector("#loading-status");
+        const progressBar = document.querySelector("#unity-progress-bar-full");
+
+        const config = {
+            dataUrl: buildUrl + "/game.data",
+            frameworkUrl: buildUrl + "/framework.js",
+            codeUrl: buildUrl + "/game.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "Word Search Games",
+            productName: "Word Search - Free Online Word Puzzle",
+            productVersion: "8.1",
+            matchWebGLToCanvasSize: true,
+            devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2)
+        };
+
+        window.hideWordSearchLoadingOverlay = () => {
+            if (loadingBar.classList.contains("is-hidden")) {
+                return;
+            }
+
+            loadingBar.classList.add("is-hidden");
+            loadingBar.addEventListener("transitionend", () => {
+                loadingBar.style.display = "none";
+            }, { once: true });
+        };
+
+        const script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, progress => {
+                progressBar.style.width = (progress * 100) + "%";
+                loadingStatus.textContent = progress < 1
+                    ? `Loading ${Math.round(progress * 100)}%`
+                    : "Starting game...";
+            }).then(unityInstance => {
+                window.wordSearchUnityInstance = unityInstance;
+                canvas.focus();
+            }).catch(error => {
+                loadingStatus.textContent = "Unable to start the game.";
+                console.error(error);
+            });
+        };
+        script.onerror = () => {
+            loadingStatus.textContent = "Unable to load the game files.";
+        };
+        document.body.appendChild(script);
+
+        window.addEventListener("resize", () => {
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+        });
+    </script>
+</body>
+</html>

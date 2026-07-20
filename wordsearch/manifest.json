@@ -1,0 +1,11 @@
+{
+  "name": "Word Search - Free Online Word Puzzle",
+  "short_name": "Word Search",
+  "description": "Play Word Search online for free with classic puzzles, categories, daily challenges, and multiple languages.",
+  "start_url": "/wordsearch/",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#162447",
+  "theme_color": "#162447",
+  "categories": ["games", "entertainment"]
+}

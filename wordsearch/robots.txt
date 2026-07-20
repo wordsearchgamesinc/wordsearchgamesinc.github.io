@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /wordsearch/Build/
+Disallow: /wordsearch/StreamingAssets/
+
+Sitemap: https://wordsearchgamesinc.com/wordsearch/sitemap.xml
